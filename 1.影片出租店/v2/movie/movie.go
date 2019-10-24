@@ -42,7 +42,3 @@ func (m *Movie) setPriceCode(priceCode int) {
 		panic("Incorrect Price Code")
 	}
 }
-
-func (m *Movie) getPriceCode() int {
-	return m.price.GetPriceCode()
-}

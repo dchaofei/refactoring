@@ -1,7 +1,6 @@
 package movie
 
 type Price interface {
-	GetPriceCode() int
 	GetCharge(daysRented int) float64
 	GetFrequentRenterPoints(daysRented int) int
 }
@@ -14,10 +13,6 @@ func (commonPoints) GetFrequentRenterPoints(daysRented int) int {
 
 type ChildrensPrice struct{ commonPoints }
 
-func (ChildrensPrice) GetPriceCode() int {
-	return ChildRens
-}
-
 func (ChildrensPrice) GetCharge(daysRented int) float64 {
 	result := 1.5
 	if daysRented > 3 {
@@ -27,10 +22,6 @@ func (ChildrensPrice) GetCharge(daysRented int) float64 {
 }
 
 type NewReleasePrice struct{ commonPoints }
-
-func (NewReleasePrice) GetPriceCode() int {
-	return NewRelease
-}
 
 func (NewReleasePrice) GetCharge(daysRented int) float64 {
 	return float64(daysRented) * 3
@@ -44,10 +35,6 @@ func (n NewReleasePrice) GetFrequentRenterPoints(daysRented int) int {
 }
 
 type RegularPrice struct{ commonPoints }
-
-func (RegularPrice) GetPriceCode() int {
-	return Regular
-}
 
 func (RegularPrice) GetCharge(daysRented int) float64 {
 	result := 2.0
